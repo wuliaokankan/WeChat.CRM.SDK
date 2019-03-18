@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jubotech.business.web.dao.DeviceStateDao">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+ 
+    <resultMap type="com.jubotech.business.web.domain.DeviceStateInfo" id="resultMap">
+        <id column="id" property="id"/>
+        <result  column="wechatid" property="wechatid"/>
+        <result  column="wechatno" property="wechatno"/>
+        <result  column="isonline" property="isonline"/>
+        <result  column="islogined" property="islogined"/>
+        <result  column="cid" property="cid"/>
+        <result  column="cname" property="cname"/>
+        <result  column="deviceid" property="deviceid"/>
+        <result  column="accountid" property="accountid"/>
+        <result  column="accountname" property="accountname"/>
+        <result  column="login_time" property="login_time"/>
+          
+    </resultMap>
+    
+	<select id="queryDeviceStateInfo" resultMap="resultMap">
+         select  t1.wechatid,t1.wechatno,t1.isonline,t1.islogined,t1.deviceid,t1.cid,t1.accountid,t1.login_time,t2.suppliername as cname,t3.account as accountname
+		 from 
+			tbl_wechat_accountinfo  t1
+			LEFT JOIN  tbl_customerinfo t2  on t1.cid = t2.id
+			LEFT JOIN  tbl_accountinfo  t3  on t1.accountid = t3.id
+         where   1=1 
+         <if test="wechatid != null and wechatid != '' ">
+           and  t1.wechatid=#{wechatid}
+         </if>
+         <if test="deviceid != null and deviceid != '' ">
+           and  t1.deviceid=#{deviceid}
+         </if>
+         <if test="isonline != null ">
+           and  t1.isonline=#{isonline}
+         </if>
+         <if test="islogined != null ">
+           and  t1.islogined=#{islogined}
+         </if>
+         <if test="cid != null ">
+           and  t1.cid=#{cid}
+         </if>
+         order by  t1.login_time desc  
+         <if test="page!= null ">
+			<if test="page.limit != null">
+				LIMIT #{page.limit}
+			</if>
+			<if test="page.offset != null">
+				OFFSET #{page.offset}
+			</if>
+		 </if>
+	</select>
+	
+	<select id="queryDeviceStateInfoCount" resultType="java.lang.Integer">
+         select  count(1) 
+         from tbl_wechat_accountinfo
+         where   1=1 
+         <if test="wechatid != null and wechatid != '' ">
+           and  wechatid=#{wechatid}
+         </if>
+         <if test="deviceid != null and deviceid != '' ">
+           and  deviceid=#{deviceid}
+         </if>
+         <if test="isonline != null ">
+           and  isonline=#{isonline}
+         </if>
+         <if test="islogined != null ">
+           and  islogined=#{islogined}
+         </if>
+         <if test="cid != null ">
+           and  cid=#{cid}
+         </if>
+	</select>
+
+</mapper>

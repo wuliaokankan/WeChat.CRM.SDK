@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jubotech.business.web.dao.AccountDao">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+  
+    <resultMap type="com.jubotech.business.web.domain.AccountInfo" id="resultMap">
+        <id column="id" property="id"/>
+        <result  column="account" property="account"/>
+        <result  column="password" property="password"/>
+        <result  column="nickname" property="nickname"/>
+        <result  column="type" property="type"/>
+        <result  column="cid" property="cid"/>
+        <result  column="state" property="state"/>
+        <result  column="create_time" property="create_time"/>
+    </resultMap>
+     
+    <select id="getAllAccountInfoByCid" resultMap="resultMap">
+         select * 
+         from tbl_accountinfo
+         where   type = 1
+         <if test="cid != null and cid != '' ">
+           and cid =#{cid}
+         </if>
+	</select>
+    
+     
+	<insert id="insert">
+	  insert into tbl_accountinfo(account,password,nickname,type,cid,state,create_time)
+	  values(#{account},#{password},#{nickname},#{type},#{cid},#{state},now()) 
+	</insert>   
+	
+	
+	<select id="queryAccountInfo" resultMap="resultMap">
+         select * 
+         from tbl_accountinfo
+         where  1=1
+         <if test="account != null and account != '' ">
+           and account LIKE CONCAT('%',#{account},'%')
+         </if>
+         <if test="type != null and type != '' ">
+           and type =#{type}
+         </if>
+         <if test="cid != null and cid != '' ">
+           and cid =#{cid}
+         </if>
+          order by create_time desc  
+         <if test="page!= null ">
+			<if test="page.limit != null">
+				LIMIT #{page.limit}
+			</if>
+			<if test="page.offset != null">
+				OFFSET #{page.offset}
+			</if>
+		 </if>
+	</select>
+	
+	<select id="queryAccountInfoCount" resultType="java.lang.Integer">
+         select  count(1) 
+         from tbl_accountinfo
+         where 1=1
+         <if test="account != null and account != '' ">
+           and account LIKE CONCAT('%',#{account},'%')
+         </if>
+         <if test="type != null and type != '' ">
+           and type =#{type}
+         </if>
+         <if test="cid != null and cid != '' ">
+           and cid =#{cid}
+         </if>
+          
+	</select>
+	
+	
+	
+	  
+	<select id="findAccountInfoByid" resultType="com.jubotech.business.web.domain.AccountInfo">
+         select  * 
+         from tbl_accountinfo
+         where  id = #{id}
+	</select>
+	 
+	 <select id="findAccountInfoByAccount" resultType="com.jubotech.business.web.domain.AccountInfo">
+         select  * 
+         from tbl_accountinfo
+         where  account = #{account}
+	</select>
+ 
+	  
+	<update id="update">
+	  update  tbl_accountinfo
+      set 
+      account = #{account},
+      password = #{password},
+      nickname = #{nickname},
+      state = #{state}
+	  where 
+	  id = #{id} 
+	</update>
+	
+	<delete id="delete">
+	   delete from  tbl_accountinfo where  id = #{id}
+	</delete>
+	
+	
+	<select id="findAccountInfo" resultType="com.jubotech.business.web.domain.AccountInfo">
+         select  * 
+         from tbl_accountinfo
+         where type = #{type} and  account=#{account}
+         and password=#{password}
+	</select>
+	  
+	<update id="pwdedit">
+	  update  tbl_accountinfo
+      set
+      password = #{password}
+	  where 
+	  id = #{id} 
+	</update>
+	
+	
+	  
+</mapper>

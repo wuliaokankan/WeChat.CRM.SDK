@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: jubo-chat-newserver
+Implementation-Version: 0.0.1
+Built-By: lenovo
+Implementation-Vendor-Id: com.jubotech
+Build-Jdk: 1.8.0_131
+Implementation-URL: http://projects.spring.io/spring-boot/jubo-chat-ne
+ wserver/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

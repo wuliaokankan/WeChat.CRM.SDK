@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jubotech.business.web.dao.WeChatAccountDao">
+<!--     <cache type="org.mybatis.caches.ehcache.LoggingEhcache" /> -->
+  
+    <resultMap type="com.jubotech.business.web.domain.WeChatAccountInfo" id="resultMap">
+        <id column="id" property="id"/>
+        <result  column="wechatid" property="wechatid"/>
+        <result  column="wechatno" property="wechatno"/>
+        <result  column="wechatnick" property="wechatnick"/>
+        <result  column="gender" property="gender"/>
+        <result  column="avatar" property="avatar"/>
+        <result  column="country" property="country"/>
+        <result  column="province" property="province"/>
+        <result  column="city" property="city"/>
+        <result  column="isonline" property="isonline"/>
+        <result  column="deviceid" property="deviceid"/>
+        <result  column="cid" property="cid"/>
+        <result  column="accountid" property="accountid"/>
+        <result  column="login_time" property="login_time"/>
+        <result  column="modify_time" property="modify_time"/>
+    </resultMap>
+      
+	<insert id="insert">
+	  insert into tbl_wechat_accountinfo(wechatid,wechatno,wechatnick,gender,avatar,country,province,city,isonline,deviceid,cid,accountid,login_time)
+	  values(#{wechatid},#{wechatno},#{wechatnick},#{gender},#{avatar},#{country},#{province},#{city},#{isonline},#{deviceid},#{cid},#{accountid},now()) 
+	</insert>   
+	 
+	<select id="findWeChatAccountInfoByid" resultType="com.jubotech.business.web.domain.WeChatAccountInfo">
+         select  * 
+         from tbl_wechat_accountinfo
+         where  id = #{id}
+	</select>
+	
+	<select id="findWeChatAccountInfoByDeviceid" resultType="com.jubotech.business.web.domain.WeChatAccountInfo">
+         select  * 
+         from tbl_wechat_accountinfo
+         where  deviceid = #{deviceid}
+	</select>
+	
+	<select id="findWeChatAccountInfoByWeChatId" resultType="com.jubotech.business.web.domain.WeChatAccountInfo">
+         select  * 
+         from tbl_wechat_accountinfo
+         where  wechatid = #{wechatid}
+	</select>
+	
+	
+	
+	<select id="findWeChatAccountInfo" resultMap="resultMap">
+         select  * 
+         from tbl_wechat_accountinfo
+         where   1=1 
+         <if test="cid != null and cid !='' ">
+           and  cid = #{cid} 
+         </if>
+         <if test="accountid != null and accountid !='' ">
+           and accountid =#{accountid}
+         </if>
+	</select>
+	
+	  
+	<update id="update">
+	  update  tbl_wechat_accountinfo
+      set 
+      wechatid = #{wechatid},
+      wechatno = #{wechatno},
+      wechatnick = #{wechatnick},
+      gender = #{gender},
+      avatar = #{avatar},
+      country = #{country},
+      province = #{province},
+      city = #{city},
+      modify_time = now()
+	  where 
+	  id = #{id} 
+	</update>
+	
+	<update id="updateLogined">
+	  update  tbl_wechat_accountinfo
+      set 
+      islogined = #{islogined},
+      accountid = #{accountid},
+      login_time =now()
+	  where 
+	  id = #{id} 
+	</update>
+	
+	<update id="updateOnline">
+	  update  tbl_wechat_accountinfo
+      set 
+      isonline = #{isonline},
+      accountid = #{accountid},
+      modify_time = now()
+	  where 
+	  id = #{id} 
+	</update>
+	
+	<update id="updateOnlineLogined">
+	  update  tbl_wechat_accountinfo
+      set 
+      isonline = #{isonline},
+      islogined = #{islogined},
+      accountid = #{accountid},
+      modify_time = now()
+	  where 
+	  id = #{id} 
+	</update>
+	 
+	
+	<delete id="delete">
+	   delete from  tbl_wechat_accountinfo where  id = #{id}
+	</delete>
+	 
+	<update id="updateAccountidOffline">
+	  update  tbl_wechat_accountinfo
+      set 
+      islogined = 1,
+      accountid = #{accountid},
+      modify_time = now()
+	  where 
+	  id = #{id} 
+	</update>
+	  
+</mapper>

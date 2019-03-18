@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jubotech.business.web.dao.PhoneDao">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+ 
+    <resultMap type="com.jubotech.business.web.domain.PhoneInfo" id="resultMap">
+        <id column="id" property="id"/>
+        <result  column="deviceid" property="deviceid"/>
+        <result  column="cid" property="cid"/>
+        <result  column="accountid" property="accountid"/>
+        <result  column="account" property="account"/>
+        <result  column="nickname" property="nickname"/>
+        <result  column="brand" property="brand"/>
+        <result  column="module" property="module"/>
+        <result  column="create_time" property="create_time"/>
+    </resultMap>
+    
+	<select id="queryPhoneInfo" resultMap="resultMap">
+         select t1.* ,t2.account
+         from tbl_phoneinfo  t1 
+         left join  tbl_accountinfo t2  on t1.accountid = t2.id 
+         where    t1.cid=#{cid} 
+         <if test="deviceid != null and deviceid != '' ">
+           and  t1.deviceid=#{deviceid}
+         </if>
+         <if test="accountid != null ">
+           and  t1.accountid=#{accountid}
+         </if>
+         order by  t1.create_time desc  
+         <if test="page!= null ">
+			<if test="page.limit != null">
+				LIMIT #{page.limit}
+			</if>
+			<if test="page.offset != null">
+				OFFSET #{page.offset}
+			</if>
+		 </if>
+	</select>
+	
+	<select id="queryPhoneInfoCount" resultType="java.lang.Integer">
+         select  count(1) 
+         from tbl_phoneinfo
+         where cid=#{cid}  
+         <if test="accountid != null ">
+           and accountid=#{accountid}
+         </if>
+         <if test="deviceid != null and deviceid != '' ">
+           and deviceid=#{deviceid}
+         </if>
+	</select>
+	 
+	<select id="getPhoneAllCountByCid" resultType="java.lang.Integer">
+         select  count(1) 
+         from tbl_phoneinfo
+         where  cid=#{cid} 
+	</select>
+	
+	
+	<select id="findPhoneByid" resultType="com.jubotech.business.web.domain.PhoneInfo">
+         select  * 
+         from tbl_phoneinfo
+         where  id = #{id}
+	</select>
+	
+	<select id="getPhoneInfoByDeviceid" resultType="com.jubotech.business.web.domain.PhoneInfo">
+         select  * 
+         from tbl_phoneinfo
+         where  deviceid = #{deviceid}
+	</select>
+	 
+	 
+	<insert id="insert">
+	  insert into tbl_phoneinfo(deviceid,cid,accountid,nickname,brand,module,create_time)
+	  values(#{deviceid},#{cid},#{accountid},#{nickname},#{brand},#{module},now()) 
+	</insert>   
+	
+	<update id="update">
+	  update  tbl_phoneinfo
+      set 
+      deviceid = #{deviceid},
+      nickname = #{nickname},
+      module = #{module},
+      brand = #{brand}
+	  where 
+	  id = #{id} 
+	</update>
+	
+	<delete id="delete">
+	   delete from  tbl_phoneinfo where  id = #{id}
+	</delete>
+	
+	<update id="binding">
+	  update  tbl_phoneinfo
+      set 
+      accountid = #{accountid}
+	  where 
+	  id = #{id} 
+	</update>	
+	
+	<update id="updateLoginTime">
+	  update  tbl_phoneinfo
+      set 
+      login_time = now()
+	  where 
+	  deviceid = #{deviceid} 
+	</update>
+	
+
+</mapper>

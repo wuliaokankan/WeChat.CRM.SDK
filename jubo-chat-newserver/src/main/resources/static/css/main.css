@@ -1,0 +1,135 @@
+#modalLogin .btn-login, #modalReg .btn-reg {
+    background: #2fb4e9 none repeat scroll 0 0;
+    color: #fff;
+    font-size: 1.1em;
+    margin: 0 3px;
+    padding: 0.3em 0;
+    width: 100%;
+}
+.modal-footer-tips label {
+    font-weight: normal;
+}
+.btn-active{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+#captcha-a {
+border-radius: 4px;
+cursor: pointer;
+position: absolute;
+z-index: 3;
+rigth: 0;
+padding-left: 2px;
+top: 0;
+}
+
+#captcha-a-reg {
+border-radius: 4px;
+cursor: pointer;
+position: absolute;
+z-index: 3;
+rigth: 0;
+padding-left: 2px;
+top: 0;
+}
+/*让所有链接都有手爪*/
+a:HOVER, a:BEFORE, a:AFTER,a:FOCUS, a:VISITED{
+	cursor: pointer;
+	text-decoration: none;
+}
+/*标签颜色*/
+.tag_tyx_bq{
+	background: #00AA00 none repeat scroll 0 0;
+	border-radius: 4px;
+	color: #fff;
+	display: inline-block;
+	margin: 7px 5px 5px 0;
+	padding: 0 6px;
+	text-decoration: none;
+}
+/*标签颜色*/
+.search-active, .tag1:HOVER, .tag1:BEFORE{
+	background: #00AA00 none repeat scroll 0 0;
+	border-radius: 4px;
+	color: #fff;
+	display: inline-block;
+	margin: 7px 0px 5px 0;
+	padding: 0 6px;
+	text-decoration: none;
+}
+
+.tag1{
+	padding: 0 6px;
+	margin: 7px 0px 5px 0;
+}
+
+/*搜索按钮*/
+.my_search{
+	background-color: #fff;
+	border-color: #ccc;
+	color: #333;
+}
+/*标题通用样式*/
+.my_titile{
+	margin-top: 0;
+	font-weight: bold;
+}
+/*介绍说明通用样式*/
+.my_content{
+	color: black;
+	text-indent: 2em;
+	line-height:200%;
+	margin-top: 5px;
+}
+/*h4副标题通用样式*/
+.my_title_h4{
+	 margin-top: 0;
+	 font-weight: bold;
+}
+.my_time_f{
+	color: gray;
+}
+.thumbnail_hover:HOVER {
+	border-color: #00AA00;
+}
+.my_padding_tag{
+	color: #666; 
+	padding: 6px;
+}
+
+#scrollUp {
+    background-image: url("../img/top.png");
+    bottom: 20px;
+    right: 20px;
+    width: 38px;    /* Width of image */
+    height: 38px;   /* Height of image */
+     
+}
+#scrollUp-active{
+	display: none;
+}
+
+
+/* 小屏幕（平板，大于等于 768px） */
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 820px) {
+.my_edit_x{
+		position:fixed;
+		right:10px;
+		top:16%;
+		width:32px;
+		height:32px;
+		background:url('../img/edit.png');
+		cursor: pointer;
+	}
+.my_edit_x:HOVER{
+		border: #00AA00 1px solid;
+}
+}    
+
+ 
+
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jubotech.business.web.dao.CustomerDao">
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+ 
+    <resultMap type="com.jubotech.business.web.domain.CustomerInfo" id="resultMap">
+        <id column="id" property="id"/>
+        <result  column="suppliername" property="suppliername"/>
+        <result  column="shortname" property="shortname"/>
+        <result  column="level" property="level"/>
+        <result  column="account_num" property="account_num"/>
+        <result  column="device_num" property="device_num"/>
+        <result  column="validity" property="validity"/>
+        <result  column="state" property="state"/>
+        <result  column="admin" property="admin"/>
+        <result  column="contact" property="contact"/>
+        <result  column="phone" property="phone"/>
+        <result  column="description" property="description"/>
+        <result  column="create_time" property="create_time"/>
+        
+    </resultMap>
+    
+    
+    
+    <select id="getCustomerInfoByDeviceId" resultType="com.jubotech.business.web.domain.CustomerInfo">
+         select t1.id,t1.suppliername
+         from tbl_customerinfo  t1, tbl_phoneinfo t2
+         where   t1.id = t2.cid  and t2.deviceid = #{deviceid}
+	</select>
+    
+    <select id="getCustomerPhoneCount" resultType="java.lang.Integer">
+         select  device_num 
+         from tbl_customerinfo
+         where  id =#{id}
+	</select>
+    
+	<select id="queryCustomerInfo" resultMap="resultMap">
+         select * 
+         from tbl_customerinfo
+         where  1=1
+         <if test="suppliername != null and suppliername != '' ">
+           and suppliername LIKE CONCAT('%',#{suppliername},'%')
+         </if>
+          order by create_time desc  
+         <if test="page!= null ">
+			<if test="page.limit != null">
+				LIMIT #{page.limit}
+			</if>
+			<if test="page.offset != null">
+				OFFSET #{page.offset}
+			</if>
+		 </if>
+	</select>
+	
+	<select id="queryCustomerInfoCount" resultType="java.lang.Integer">
+         select  count(1) 
+         from tbl_customerinfo
+         where 1=1
+         <if test="suppliername != null and suppliername != '' ">
+           and  suppliername LIKE CONCAT('%',#{suppliername},'%')
+         </if>
+          
+	</select>
+	  
+	<select id="findCustomerInfoByid" resultType="com.jubotech.business.web.domain.CustomerInfo">
+         select  * 
+         from tbl_customerinfo
+         where  id = #{id}
+	</select>
+	 
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id">
+	  insert into tbl_customerinfo(suppliername,shortname,level,account_num,device_num,validity,state,admin,contact,phone,description,create_time)
+	  values(#{suppliername},#{shortname},#{level},#{account_num},#{device_num},#{validity},#{state},#{admin},#{contact},#{phone},#{description},now()) 
+	</insert>   
+	
+	<update id="update">
+	  update  tbl_customerinfo
+      set 
+      suppliername = #{suppliername},
+      shortname = #{shortname},
+      level = #{level},
+      account_num = #{account_num},
+      device_num = #{device_num},
+      validity = #{validity},
+      state = #{state},
+      contact = #{contact},
+      phone = #{phone},
+      description = #{description}
+	  where 
+	  id = #{id} 
+	</update>
+	
+	<delete id="delete">
+	   delete from  tbl_customerinfo where  id = #{id}
+	</delete>
+	
+  
+
+</mapper>
