@@ -204,3 +204,7 @@ ChatRoomMembersNotice = 2034;
 
 目前【聚客通】【有客来】等等等scrm都是基于这个API二次开发的。
 咨询请加微信tangjinjinwx
+
+演示demo,提供源码
+![Image text](https://img-blog.csdnimg.cn/20190308152747253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
+
