@@ -1,25 +1,27 @@
 # 个人号微信二次开发sdk协议,微信个人号开发API接口
-程序说明:
+微信SDK程序说明:
 非微信ipad协议、非mac协议,非安卓协议，api可实现微信99%功能；      
 无需扫码登录、可收发朋友圈、查看朋友圈、朋友圈互动点赞、评论、      
 好友列表、微信消息收发、发文本消息、图片消息、名片消息、动图表情、发文件、删好友      
 添加好友、微信转账、微信红包接收、分享小程序、分享名片、加通讯录好友、微信收藏、微信标签等！      
 清理僵尸粉、消息群发、通过好友请求、      
 微信建群、微信拉人进群、踢群成员、邀请群成员、退群、改群名称、群列表、发布群公告、多群消息同步等      
-微信公众号阅读、关注与取消关注公众号、公众号列表信息、清理微信空间
-...功能太多懒得写了！！！
+微信公众号阅读、关注与取消关注公众号、公众号列表信息、清理微信空间...功能太多懒得写了！！！
+
 咨询请加微信tangjinjinwx
 
 
 本SDK适用于微信营销软件研发、微信营销手机研发、微信手机群控系统研发、云控系统研发、微信客服系统研发、微信营销系统研发、
 微客微商营销工具研发、微信scrm客服系统研发、淘宝客微信发单机器人研发、导购返利机器人研发、微信群管理机器人研发等。
-使用此sdk可快速实现微信的二次开发，让你轻松开发出上述软件功能
+使用此sdk可快速实现微信的二次开发，让你轻松开发出上述软件功能。
 SDK接入简单、兼容性好、拓展性强，始终支持微信官方最新版本，并定时维护升级，可按需定制！
 功能参考接口参考http://www.yunlauncher.com/Blog/articles/119.html
 
 咨询请加微信tangjinjinwx
 
-全部协议定义在这：
+
+微信SDK接口API全部协议定义如下：
+----------------
 1、基础消息类型
 1、客户端发送的心跳包
 HeartBeatReq = 1001;
@@ -203,13 +205,54 @@ HistoryMsgPushNotice = 2033;
 ChatRoomMembersNotice = 2034;
 
 目前【聚客通】【有客来】等等等scrm都是基于这个API二次开发的。
+--------------------
 咨询请加微信tangjinjinwx
 
-以下为演示demo,可提供源码
+以下为PC端演示demo,可提供源码
 ![Image text](https://img-blog.csdnimg.cn/20190308153539202.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
 ![Image text](https://img-blog.csdnimg.cn/20190308152747253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
 ![Image text](https://img-blog.csdnimg.cn/20190308152834149.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
 ![Image text](https://img-blog.csdnimg.cn/2019030815285169.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
 ![Image text](https://img-blog.csdnimg.cn/20190308152903443.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
 
+方案优势说明：
+--------------
+1、个人微信多账号管理，聚合便捷聊天
+多个微信号同时登陆，多个微信号集中在一个窗口进行聊天，实现一人
+多号同时沟通快速提升沟通效率；助力企业养号，提升微信营销效能
 
+2、客服灵活分配
+客服主管可自由分配微信号给指定客服，方便及时处理问题，也可随时转接给公司商务人员
+
+3、自动化快捷回复
+关键词触发，话术快捷回复；
+话术提前准备，点击即可快捷回复；灵活高效、节省输入时间，提高客服沟通效率
+
+4、聊天记录永久保存
+微信文字、语音、图片、视频、文件等各种类型聊天内容实时上传云端存储，防止数据丢失
+
+5、敏感词提醒
+支持设置各类型敏感词汇库，敏感词预警，有效避免员工不规范和客户沟通
+
+
+6、智能发布朋友圈，朋友圈自动点赞
+完整的朋友圈营销解决方案，自定义内容推送、互动评论，提高商家品牌在朋友圈曝光度和活跃度，大幅度提升真实性，培育会员对品牌认可和忠诚度
+
+7、微信自动群发，营销工具辅助推广
+群发好友，群发群、微信转账、微信红包接收、分享小程序、分享名片、加通讯录好友、微信收藏、微信标签、清理僵尸粉、清理微信空间等！
+
+
+8、会员沉淀，粉丝自动添加，好友自动通过
+多种加好友方式，将买家沉淀到微信，打造私域流量池；智能欢迎语、智能回复、自动化操作，高效节省人力成本
+
+9、粉丝标签化管理
+根据好友情况，及时打标签，自定义标签，直接同步微信标签；智能标签化数据化管理，千人千面精准化营销
+
+
+10、群管理
+通过进群自动打招呼、发广告踢人、群公告、群加好友、建群等一系列群功能，大幅度提升群管理和营销效果
+
+11、微信数据分析统计，重复好友统计
+微信也能制定KPI，评估每个客服的工作量，合理分配，提高工作效率；员工微信工作量实时统计，可视化
+报表，支持查看团队或个人统计数据
+一键统计重复的好友、群分别隶属于哪些微信客服号，有效解决企业客户的判定问题及群梳理
