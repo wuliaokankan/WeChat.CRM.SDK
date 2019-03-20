@@ -23,13 +23,17 @@ SDK接入简单、兼容性好、拓展性强，始终支持微信官方最新�
 微信sdk方案特色
 --------------------
 1、无需扫码登陆微信：区别传统的网页协议版微信和ipad协议版微信，我们的解决方案是不需要扫码登陆微信的，更快捷，更高效！
+
 2、提供二次开发SDK：我们为合作伙伴提供完整的二次开发sdk，使用sdk可研发各类基于微信的营销系统及软件等！
+
 3、2W多设备稳定商用：目前已有多家合作伙伴与我们签约合作，累计出货20000多台设备，所有设备稳定！
+
 
 
 微信SDK接口API全部协议定义如下：
 ----------------
 1、基础消息类型
+
 1、客户端发送的心跳包
 HeartBeatReq = 1001;
 2、消息接收确认回复（接收或拒绝接收）
@@ -38,6 +42,7 @@ MsgReceivedAck = 1002;
 Error = 1003;
 
 2、设备客户端授权类消息
+
 1、设备(手机客户端、客服客户端)获取通信token请求
 DeviceAuthReq = 1010;
 2、设备(手机客户端、客服客户端)获取通信token响应
@@ -48,6 +53,7 @@ DeviceExitNotice = 1012;
 AccountForceOfflineNotice = 1013;
 
 3、手机客户端上传的通知类消息
+
 1、手机客户端微信上线通知
 WeChatOnlineNotice = 1020;
 2、手机客户端微信下线通知
@@ -98,6 +104,7 @@ ChatRoomChangedNotice = 1042;
 PullChatRoomQrCodeTaskResultNotice = 1043;
 
 4、服务端、客服客户端发给设备的指令类消息
+
 1、给好友发消息任务
 TalkToFriendTask = 1070;
 2、发送朋友圈任务
@@ -142,6 +149,7 @@ TriggerHistoryMsgPushTask = 1089;
 PullChatRoomQrCodeTask = 1090;
 
 5、服务端通知执行的命令
+
 1、服务端通知pc客户版本升级
 UpgradeAppNotice = 1093;
 2、通知手机客户端软件升级
@@ -192,6 +200,7 @@ RequestTalkContentTaskResultNotice = 1219;
 ForwardMessageByContentTask = 1220;
 
 6、手机端主动发出的交互类消息
+
 1、手机端推送好友列表
 FriendPushNotice = 2026;
 2、手机端推送当前安装版本
