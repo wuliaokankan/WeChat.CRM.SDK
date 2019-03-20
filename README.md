@@ -20,6 +20,12 @@ SDK接入简单、兼容性好、拓展性强，始终支持微信官方最新�
 
 咨询请加微信tangjinjinwx
 
+微信sdk方案特色
+--------------------
+1、无需扫码登陆微信：区别传统的网页协议版微信和ipad协议版微信，我们的解决方案是不需要扫码登陆微信的，更快捷，更高效！
+2、提供二次开发SDK：我们为合作伙伴提供完整的二次开发sdk，使用sdk可研发各类基于微信的营销系统及软件等！
+3、2W多设备稳定商用：目前已有多家合作伙伴与我们签约合作，累计出货20000多台设备，所有设备稳定！
+
 
 微信SDK接口API全部协议定义如下：
 ----------------
@@ -217,7 +223,7 @@ ChatRoomMembersNotice = 2034;
 ![Image text](https://img-blog.csdnimg.cn/2019030815285169.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
 ![Image text](https://img-blog.csdnimg.cn/20190308152903443.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
 
-方案优势说明：
+方案可实现功能说明
 --------------
 1、个人微信多账号管理，聚合便捷聊天
 
