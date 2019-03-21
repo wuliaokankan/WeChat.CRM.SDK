@@ -1,0 +1,10 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+message CircleLikeNoticeMessage {
+    string WeChatId = 1; // 所属微信
+    int64 CircleId = 2; // 朋友圈id
+    string FriendId = 3; // 好友id
+    bool IsDelete = 4; // 是否是点赞
+    int64 PublishTime = 5; // 点赞时间
+}

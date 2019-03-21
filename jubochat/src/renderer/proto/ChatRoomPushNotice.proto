@@ -1,0 +1,27 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+message ChatRoomMessage {
+    string UserName = 1;
+    string NickName = 2;
+    repeated string MemberList = 3;
+    string Owner = 4;
+    string Notice = 5;
+    repeated DisplayNameMessage ShowNameList = 6;
+    string SelfDisplayName = 7;
+    string Avatar = 8; //微信头像 
+
+    message DisplayNameMessage{
+        string UserName = 1;
+        string ShowName = 2;
+    }
+}
+
+message ChatRoomPushNoticeMessage {
+    string WeChatId = 1; // 商家所属微信号
+    repeated ChatRoomMessage ChatRooms = 2; // 好友信息模型 多个
+    int32 Size = 3;
+    int32 Count = 4;
+    int32 Page = 5;
+}
+

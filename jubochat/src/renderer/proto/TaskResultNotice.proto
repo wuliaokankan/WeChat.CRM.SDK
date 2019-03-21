@@ -1,0 +1,12 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+import "TransportMessage.proto";
+
+message TaskResultNoticeMessage {
+    bool Success = 1; // 是否成功
+    EnumErrorCode Code = 2; // 错误码 Success = true 忽略
+    string ErrMsg = 3; // 错误内容描述 Success = true 忽略
+    int64 TaskId = 4; // 业务的id,通用的。
+    EnumMsgType TaskType = 5; //原来执行的任务的类型
+    string WeChatId = 6; // 执行的微信
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+enum EnumChatRoomChange {
+    Change_MemberList = 0; // 群成员
+    Change_PublicNotice = 1; // 公告
+    Change_NickName = 2; // 群昵称
+    Change_ShowName = 3; // 群显示名，内容格式：
+    Change_MyShowName = 4; // 自己的群显示名
+    Change_Owner = 5; // 群主
+}
+
+// TODO: NOT USED
+message ChatRoomChangedNoticeMessage {
+    string WeChatId = 1; // 商家所属微信号
+    string UserName = 2;
+    EnumChatRoomChange What = 3;
+    string Content = 4;
+}

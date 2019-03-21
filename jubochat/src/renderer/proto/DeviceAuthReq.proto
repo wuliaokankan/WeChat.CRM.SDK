@@ -1,0 +1,15 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+message DeviceAuthReqMessage {
+    EnumAuthType AuthType = 1; //认证方式
+    string Credential = 2; //凭证信息（不同认证方式传入不同的凭证信息）
+
+    //认证方式枚举
+    enum EnumAuthType {
+        Default = 0; //默认方式，默认使用
+        DeviceCode = 1; //设备码（用于手机客户端，此方式Credential应传入手机IMEI）
+        Username = 2; //用户名密码方式（此方式Credential应传入base64(user:pwd)）
+        InternalCode = 3; //内部服务间通讯方式（此方式Credential可为空，服务器根据ip白名单来认证）
+    }
+}

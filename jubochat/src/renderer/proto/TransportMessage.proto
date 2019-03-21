@@ -1,0 +1,240 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+//根传输消息
+message TransportMessage {
+    int64 Id = 1; //消息Id(发送方内保持自增),请求中传入，响应中传回相同值
+    string AccessToken = 2; //设备通信token
+    EnumMsgType MsgType = 3; //承载的具体消息类型
+    google.protobuf.Any Content = 4; //具体的消息数据
+    int64 RefMessageId = 5; //如果是针对某个消息的响应，这里写对应请求的id
+}
+
+//消息类型枚举，一般每一个消息类型都应该对应一个特定的message结构
+//20xx形式的消息类型需要 手机客户端开发者留意
+//30xx形式的消息类型需要 PC客户端开发者留意
+//10xx形式的消息类型需要 手机客户端、PC客户端开发者留意
+enum EnumMsgType {
+
+    UnknownMsg = 0; //未知消息
+
+    BrokerTransferTask = 1; //服务器内部使用传递消息
+    DeviceAuthStatChangedBroadcast = 2; //设备授权、退出消息集群内广播消息
+    BrokerTransferTaskResult = 3; //消息转发结果通知
+
+    HeartBeatReq = 1001; //客户端发送的心跳包
+    MsgReceivedAck = 1002; //消息接收确认回复（接收或拒绝接收）
+    Error = 1003; //将错误单独提升为一种消息类型 4.1
+
+    // 设备客户端授权类消息
+    DeviceAuthReq = 1010; //设备(手机客户端、客服客户端)获取通信token请求 4.2
+    DeviceAuthRsp = 1011; //设备(手机客户端、客服客户端)获取通信token响应 4.3
+    DeviceExitNotice = 1012; //设备授权后退出(仅用于服务端内部)
+    AccountForceOfflineNotice = 1013; //账号强制下线通知 4.18
+
+    // 手机客户端上传的通知类消息
+    WeChatOnlineNotice = 1020; //手机客户端微信上线通知 4.4
+    WeChatOfflineNotice = 1021; //手机客户端微信下线通知 4.5
+    FriendAddNotice = 1022; //微信个人号新增好友通知 4.6
+    FriendDelNotice = 1023; //微信个人号移除好友通知 4.7
+    FriendTalkNotice = 1024; //微信好友发来聊天消息 4.8
+    TaskResultNotice = 1025; //任务执行结果通知 4.9
+    WeChatTalkToFriendNotice = 1026; // 手机上回复好友的聊天消息 4.16
+    FriendAddReqeustNotice = 1027; // 有好友请求添加好友的通知 4.14
+    TalkToFriendTaskResultNotice = 1028; // 手机端向服务端通知聊天执行结果 4.17
+    RequestTalkDetailTaskResultNotice = 1029; //图片或视频消息的详细内容结果 4.22
+    PullWeChatQrCodeTaskResultNotice = 1030; //上传手机客户端上微信的二维码 4.51
+    CircleNewPublishNotice = 1031; // 手机上发送了朋友圈通知 4.1.31 ***
+    CircleDelNotice = 1032; // 手机上删除朋友圈通知 4.1.32 ***
+    CircleLikeNotice = 1033; // 手机检测到有人点赞/取消点赞通知 4.1.33 ***
+    CircleCommentNotice = 1034; // 手机检测到有人评论/删除朋友圈通知 4.1.34 ***
+    PostMessageReadNotice = 1035; // 消息标记为已读 4.1.35
+    ContactsInfoNotice = 1036; // 联系人信息上传 4.1.36
+    ChatRoomAddNotice = 1037; // 群聊新增通知 4.1.37
+    ContactLabelAddNotice = 1038; // 联系人标签新增，修改通知
+    TakeMoneyTaskResultNotice = 1039; // 收钱任务执行结果通知
+    CircleDetailNotice = 1040; // 朋友圈图片上传
+    ChatRoomDelNotice = 1041; // 群聊删除通知
+    ChatRoomChangedNotice = 1042; // 群聊信息变更通知
+    PullChatRoomQrCodeTaskResultNotice = 1043; // 群二维码
+
+    // 服务端、客服客户端发给设备的指令类消息
+    TalkToFriendTask = 1070; //给好友发消息任务 4.10
+    PostSNSNewsTask = 1071; //发送朋友圈任务 4.11
+    AddFriendsTask = 1072; //主动添加好友任务 4.12
+    PostSNSNewsTaskResultNotice = 1073; // 发送朋友圈任务后数据回传 4.13
+    DeleteSNSNewsTask = 1074; // 删除朋友圈 4.26
+    AcceptFriendAddRequestTask = 1075; // 客户端或者服务端接受好友请求通知 4.15
+    WeChatGroupSendTask = 1076; //群发消息任务 4.19
+    WeChatMaintenanceTask = 1077; //执行养号动作命令 4.20
+    RequestTalkDetailTask = 1078; //请求图片或视频消息的详细内容 4.21
+    PullWeChatQrCodeTask = 1079; //服务端主动要求手机上传当前登录的微信二维码 4.52
+    TriggerFriendPushTask = 1080; // 触发手机推送好友列表任务 4.25
+    TriggerCirclePushTask = 1081; // 触发手机推送朋友圈列表任务 4.1.81 ***
+    CircleCommentDeleteTask = 1082; // 朋友圈评论删除任务 4.1.82 ***
+    CircleCommentDeleteTaskResultNotice = 1083; // 朋友圈评论删除任务反馈 4.1.83
+    CircleCommentReplyTask = 1084; // 朋友圈评论回复任务 4.1.84 ***
+    CircleCommentReplyTaskResultNotice = 1085; // 朋友圈评论回复反馈 4.1.85 ***
+    TriggerMessageReadTask = 1086; // 通知手机将某个聊天窗口置为已读 4.1.86
+    RevokeMessageTask = 1087; // 消息撤回 4.1.87
+    ForwardMessageTask = 1088; // 转发消息 4.1.88
+    TriggerHistoryMsgPushTask = 1089; // 通知手机推送聊天记录
+    PullChatRoomQrCodeTask = 1090; // 获取群聊二维码
+
+    // juketool发送给服务端执行的命令
+    PostDeviceReAllocTask = 1091; // 通知服务端重新分配 4.31
+    PostAccountOfflineTask = 1092; // 通知服务端下线账号 4.32   
+    UpgradeAppNotice = 1093; // 服务端通知版本升级 4.33
+    UpgradeDeviceAppNotice = 1094; // 通知手机客户端软件升级 4.34
+    PostFriendDetectTask = 1095; //清粉任务 4.35
+    PostStopFriendDetectTask = 1096; //终止清粉任务  4.36
+    PostDeleteDeviceNotice = 1097; // 删除设备通知  4.37
+    PostMomentsPraiseTask = 1098; //朋友圈点赞任务  4.1.98
+    PostStopMomentsPraiseTask = 1099; //停止朋友圈点赞任务 4.1.99
+    PostStopWeChatMaintenanceTask = 1100; //养号任务停止 4.1.100
+    ModifyFriendMemoTask = 1101; //修改备注任务
+
+    TakeLuckyMoneyTask = 1200; // 领取红包或转账
+    PullFriendCircleTask = 1201; // 获取指定好友朋友圈
+    PullCircleDetailTask = 1202; // 获取朋友圈图片
+    CircleLikeTask = 1203; // 单条朋友圈点赞任务
+    TriggerChatroomPushTask = 1210; //触发手机推送群聊列表
+    RequestChatRoomInfoTask = 1211; // 请求具体群聊的详细信息
+    RequestContactsInfoTask = 1212; // 获取联系人详细信息（不一定是好友，如群聊成员）
+    ChatRoomActionTask = 1213; // 群聊管理
+    AddFriendInChatRoomTask = 1214; // 群内加好友
+    AddFriendFromPhonebookTask = 1215; // 通讯录加好友
+    DeleteFriendTask = 1216; // 删除好友
+    SendLuckyMoneyTask = 1217; // 发红包
+    RequestTalkContentTask = 1218; // 获取聊天消息的原始内容（主要是xml内容）
+    RequestTalkContentTaskResultNotice = 1219; // 返回聊天消息的原始内容
+    ForwardMessageByContentTask = 1220; // 转发消息内容
+
+    // 手机端主动发出的交互类消息 
+    FriendPushNotice = 2026; //手机端推送好友列表 4.50
+    PostDeviceInfoNotice = 2027; // 手机端推送当前安装版本 4.51
+    PostFriendDetectCountNotice = 2028; //手机端回传检测清粉好友数 4.52
+    CirclePushNotice = 2029; // 手机回传朋友圈数据 4.2.4
+    PostMomentsPraiseCountNotice = 2030; // 手机回传朋友圈点赞数量 4.2.5
+    ChatroomPushNotice = 2031; // 手机端推送群聊列表
+    ContactLabelInfoNotice = 2032; // 手机端推送标签列表
+    HistoryMsgPushNotice = 2033; // 推送历史消息
+    ChatRoomMembersNotice = 2034; // 群成员（陌生人）信息
+    
+        // 客服客户端主动发出的交互类消息 与手机端无关 
+    GetWeChatsReq = 3050; // 拉取当前微信个人号列表请求（立即） 4.81 
+    GetWeChatsRsp = 3051; //拉取当前微信个人号列表响应(立即) 4.82
+    RecentFriendChangeNotice = 3052; // 最近好友数据更改通知(服务器下发) 4.83
+    TodayFriendChangeNotice = 3053; // 今日接待数据更改通知(服务器下发) 4.84
+    AccountLogoutNotice = 3054; // 客户端退出通知 4.85
+    WeChatLoginNotice = 3055; // 客户端选择微信号登陆通知 4.86
+    SyncFriendListAsyncReq = 3056; //PC客户端请求同步好友列表 4.87
+    SyncFriendListAsyncRsp = 3057; // 同步好友推送的数据模型 4.88
+    SyncRecentFriendListAsyncReq = 3058; // 同步最近聊天好友列表 4.89
+    SyncRecentFriendListAsyncRsp = 3059; // 同步最近聊天好友响应（异步） 4.90
+    SyncTodayFriendListAsyncReq = 3060; // 同步今日接待好友列表请求 4.91
+    SyncTodayFriendListAsyncRsp = 3061; // 同步今日接待好友响应（异步） 4.92
+    SyncFriendMessageAsyncReq = 3062; // 同步好友消息数据请求 4.93
+    SyncFriendMessageAsyncRsp = 3063; // 同步好友消息数据响应（异步）4.94
+    TalkToFriendTaskReceived = 3064; // TalkToFriendTask的即时响应(服务器下发) 4.95
+    ReadChatMessageNotice = 3065; // 标记消息已读 4.96
+    SyncFriendAddReqeustAsyncReq = 3066; // 同步加好友请求 4.97
+    SyncFriendAddRequestAsyncRsp = 3067; // 同步加好友列表数据响应 4.98
+    WeChatForceOfflineNotice = 3068; // 微信登出通知(服务器下发) 4.99
+    SyncQuickReplyAsyncReq = 3069; // 快捷回复信息请求模型 4.100
+    SyncQuickReplyAsyncRsp = 3070; // 快捷回复信息响应 4.101
+    QuickReplyAddNotice = 3071; // 快捷回复添加通知 4.102
+    QuickReplyAddReceived = 3072; // 快捷回复添加被接受 4.103
+    QuickReplyDelNotice = 3073; // 快捷回复删除通知 4.104
+    GetTagGroupReq = 3074; // 获取标签分组请求数据 4.105
+    GetTagGroupRsp = 3075; // 获取标签分组数据响应数据 4.106
+    GetTagFriendsReq = 3076; // 获取标签下的好友数据请求 4.107
+    GetTagFriendsRsp = 3077; // 获取标签下的好友数据响应 4.108
+    WeChatForceOnlineNotice = 3078; // 微信在设备上上线通知 4.109
+    DeleteRecentFriendNotice = 3079; // 删除最近聊天好友通知 4.110
+    DeleteTodayFriendNotice = 3080; // 删除今日接待好友通知 4.111
+    WeChatInfoChangeNotice = 3081; // 微信信息更改通知 4.112
+    GetLastestVersionReq = 3082; // 获取最后一个版本的请求 4.113
+    GetLastestVersionRsp = 3083; // 获取最后一个版本的响应 4.114
+    CheckDeviceAppVersionReq = 3084; // 检测设备App版本请求 4.115
+    CheckDeviceAppVersionRsp = 3085; // 检测设备App版本响应 4.116
+    NewAppVersionPublishNotice = 3086; // 有新版本软件发布通知 4.117
+
+    PostAppInfoReq = 3201; // 客户端上报客户端信息 4.201
+    PostLogReq = 3202; // 客户端上传日志 4.202
+}
+
+// 全局错误码表
+enum EnumErrorCode {
+    Success = 0; //无错误
+    NoRight = 1001; //无权限
+    InvalidParam = 1002; //数据信息不合法
+    InternalError = 1003; //内部处理错误
+    TargetNotOnline = 1004; //发送消息或指令时对方不在线
+}
+
+// 性别枚举
+enum EnumGender {
+    UnknownGender = 0; //未知
+    Male = 1; //男
+    Female = 2; //女
+}
+
+// 聊天内容类型
+enum EnumContentType {
+    UnknownContent = 0; // 未知内容
+    Text = 1; // 文本内容
+    Picture = 2; // 图片消息
+    Voice = 3; // 语音消息
+    Video = 4; // 视频消息
+    System = 5; //系统消息
+    Link = 6; // 链接消息
+    LinkExt = 7; // 扩展的链接消息（小程序分享等），内容为xml格式，暂未使用
+    File = 8; // 文件发送
+    NameCard = 9; // 名片
+    Location = 10; // 位置信息
+    LuckyMoney = 11; // 红包
+    MoneyTrans = 12; // 转账
+    WeApp = 13; // 小程序
+    UnSupport = 99; // 不支持的消息
+}
+
+// 设备 ~ 微信号 在线状态枚举
+enum EnumOnlineState {
+    UnknownState = 0; // 未知，在条件中可认为是全部
+    Online = 1; // 在线
+    Offline = 2; // 离线
+}
+
+// 任务类型
+enum EnumTaskType {
+    UnknownTask = 0; // 未知，不应该出现，但是协议需要
+    ReadTencentNews = 1; // 阅读腾讯新闻
+    ReadMPArticles = 2; // 阅读公众号文章
+    ReadKYKArticles = 3; // 阅读看一看文章
+}
+
+// 账号类型
+enum EnumAccountType {
+    UnknownAccountType = 0; // 未知
+    Main = 1; // 主账号
+    SubUser = 2; // 子账号
+}
+
+// 消息发送状态
+enum EnumSendStatus {
+    NoAction = 0x00; // 无状态
+    Sending = 0x01; // 发送中
+    SendSuccess = 0x11; // 发送成功
+    SendError = 0x10; // 发送失败
+}
+
+//被强制下线的原因
+enum EnumForceOfflineReason {
+    NoReason = 0; //就是要下线你 
+    FuckedByOtherAuthorizer = 1; //别处登录挤下线了 
+    ByReAlloc = 2; // 被重新分配
+    ByDeviceOffline = 3; // 设备下线而下线
+    ByWeChatOffline = 4; // 微信主动下线
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+import "TransportMessage.proto";
+message DeviceAuthRspMessage {
+    string AccessToken = 1; //授权成功后颁发给客户端的accesstoken
+    ExtraMessage Extra = 2;
+
+    message ExtraMessage { // 扩展信息
+                           int64 SupplierId = 1;
+                           int64 UnionId = 2;
+                           EnumAccountType AccountType = 3;
+                           string SupplierName = 4;
+                           string NickName = 5;
+                           string Token = 6; // 访问www使用
+    }
+}

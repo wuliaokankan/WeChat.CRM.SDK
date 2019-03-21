@@ -1,0 +1,11 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+message ForwardMessageByContentTaskMessage {
+    string WeChatId = 1; //
+    string FriendIds = 2; //目标人群id列表，用分号;分隔
+    int64 MsgSrvId = 3; // 消息Id, 非必须
+    int32 MsgType = 4; // 消息的原始类型，一般为49，链接消息
+    string Content = 5; // 消息的原始内容
+    int64 TaskId = 6; //
+}

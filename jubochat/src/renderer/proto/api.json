@@ -1,0 +1,21 @@
+{
+  "登陆相关": [
+    {
+      "protoName": "DeviceAuthReq.proto",
+      "features": "账号登陆请求",
+      "remark": {
+        "MsgType": "DeviceAuthReq",
+        "Content": {
+          "AuthType": 2,
+          "Credential": "base64.b64EncodeUnicode(this.username + ':' + this.password)"
+        }
+      },
+      "isAchieved": true
+    },
+    {
+      "protoName": "DeviceAuthRsp.proto",
+      "features": "账号登陆结果通知",
+      "isAchieved": true
+    }
+  ]
+}

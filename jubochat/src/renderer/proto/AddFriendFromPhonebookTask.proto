@@ -1,0 +1,10 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+message AddFriendFromPhonebookTaskMessage {
+    string WeChatId = 1; // 商家个人微信内部全局唯一识别码
+    int32 Count = 2; // 添加多少人
+    bool Reset = 3; // 重置已添加记录
+    string Message = 4; // 招呼语
+    int64 TaskId = 5; //任务Id
+}

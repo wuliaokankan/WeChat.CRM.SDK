@@ -1,0 +1,10 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+message PullChatRoomQrCodeTaskResultNoticeMessage {
+    bool Success = 1; // 是否成功
+    string ChatRoomId = 2; // 群聊id
+    string QrCodeUrl = 3; // 二维码图片url
+    int64 TaskId = 4; // 业务的id,通用的。
+    string WeChatId = 5; // 商家个人微信内部全局唯一识别码
+}

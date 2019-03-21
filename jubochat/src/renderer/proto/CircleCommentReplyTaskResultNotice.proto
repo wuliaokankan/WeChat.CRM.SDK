@@ -1,0 +1,15 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+import "TransportMessage.proto";
+message CircleCommentReplyTaskResultNoticeMessage {
+    bool Success = 1; // 是否成功
+    EnumErrorCode Code = 2; // 错误码 Success = true 忽略
+    string ErrMsg = 3;// 错误内容描述 Success = true 忽略
+    int64 CommentId = 4; // 聊天Id
+    int64 ReplyCommentId = 5; // 回复的评论id
+    int64 TaskId = 6; // 请求中传递过去的jkt本地的表主键id
+    int64 PusblishTime = 7; // 发布时间
+    int64 CircleId = 8; // 朋友圈id
+    string WeChatId = 9; // 商家所属微信号
+}

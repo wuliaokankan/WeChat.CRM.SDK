@@ -1,0 +1,7 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+message WeChatOfflineNoticeMessage {
+    string WeChatId = 1; // 微信内部全局唯一识别码
+    string IMEI = 2; // 设备唯一号
+}

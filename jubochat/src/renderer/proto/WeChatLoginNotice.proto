@@ -1,0 +1,15 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+import "TransportMessage.proto";
+message WeChatLoginNoticeMessage {
+    int64 SupplierId = 1; // 所属商家
+    int64 UnionId = 2;
+    EnumAccountType AccountType = 3;
+    repeated WeChatLoginMessage WeChats = 4; // 选择微信号
+
+    message WeChatLoginMessage {
+        string WeChatId = 1; // 微信Id
+        bool IsLogin = 2; // 是否登陆 false 代表退出
+    }
+}

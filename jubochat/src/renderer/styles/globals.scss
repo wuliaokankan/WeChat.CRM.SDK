@@ -1,0 +1,120 @@
+$mygreen: #09bb07;
+$hrc: rgb(224, 220, 212);
+.active {
+  color: #09bb07;
+}
+.bb {
+  border-bottom: $hrc solid 2px;
+}
+.border {
+  border: red solid 1px;
+}
+.blue {
+  color: #46b6ef;
+}
+.black {
+  color: black;
+}
+.pink {
+  color: #f37e7d;
+}
+.gray {
+  color: gray;
+}
+.fontcolor {
+  color: black;
+}
+.error {
+  color: red;
+  text-align: center;
+}
+.message {
+  color: #09bb07;
+  text-align: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.common {
+  height: 98%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pointer {
+  cursor: pointer;
+}
+.female {
+  color: #f37e7d;
+}
+.male {
+  color: #6bc3f0;
+}
+.ellipsis {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ellipsis2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.scroll {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #bababa;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: black;
+  }
+}
+.scroll-x {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: black;
+  }
+}
+.font14 {
+  font-size: 14px;
+}
+.title {
+  width: 100%;
+  height: 5%;
+  background: #282b30;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.bottom {
+  width: 100%;
+  height: 5%;
+  background: #282b30;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

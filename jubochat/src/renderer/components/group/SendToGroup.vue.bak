@@ -1,0 +1,493 @@
+<template>
+  <div class="sendMessageToFriends">
+    <!-- wechats -->
+    <div class="wechats bg">
+      <p class="title">选择微信</p>
+      <div class="wechat-list scroll">
+        <div
+          v-for="(wechat, index) in wechats"
+          :key="index"
+          :class="[{sw:current===index},{selected:isSelected(wechat,1)>=0}]"
+          @click="choseWechat(wechat,index)"
+        >
+          <img :src="wechat.Avatar" alt>
+          <span class="ellipsis" v-text="wechat.WeChatNick"></span>
+        </div>
+      </div>
+      <div class="bottom"></div>
+    </div>
+    <!-- friends -->
+    <div class="friends bg">
+      <div class="search title">
+        <input type="search" placeholder="输入昵称" v-model="searchInfo">
+        <button @click="allChose(1)">全选</button>
+        <button @click="allChose(0)">全不选</button>
+      </div>
+      <ul class="scroll">
+        <li
+          v-if="index<20"
+          v-for="(friend, index) in friendsList"
+          :key="index"
+          :class="{selected:isSelected(friend,0)>=0}"
+          @click="choseFriend(friend)"
+        >
+          <img v-if="friend.avatar!=='undefined'" :src="friend.avatar" alt>
+          <img v-else src="../../assets/miss.png" alt>
+          <span class="ellipsis" v-text="friend.friendNick" :title="friend.friendNick"></span>
+        </li>
+      </ul>
+      <div class="bottom"></div>
+    </div>
+    <div class="content bg">
+      <div class="type title">
+        群发类型：
+        <button @click="toggleType('text')">文字</button>
+        <button @click="toggleType('picture')">图片</button>
+      </div>
+      <div class="text" v-if="type==='text'">
+        <!-- <textarea name id cols="30" rows="25" placeholder="输入群发的内容..." v-model="content"></textarea> -->
+        <textarea name id cols="30" placeholder="输入群发的内容..." v-model="content"></textarea>
+      </div>
+      <div class="flex-center picture" v-if="type==='picture'">
+        <div>
+          <img :src="contentPic.url" alt>
+        </div>
+        <label class="pointer" for="picture">
+          <i class="fa fa-picture-o fa-2x" aria-hidden="true">选择图片</i>
+        </label>
+        <input
+          v-show="false"
+          id="picture"
+          accept=".png, .jpeg, .jpg, .gif"
+          type="file"
+          ref="gp"
+          @change="showPicture()"
+        >
+      </div>
+      <div class="tool bottom">
+        <i v-if="type==='text'" class="fa fa-smile-o" aria-hidden="true" title="表情"></i>
+        <i
+          v-if="type==='text'"
+          class="fa fa-trash-o"
+          aria-hidden="true"
+          title="清空"
+          @click="clearContent()"
+        ></i>
+      </div>
+    </div>
+    <div class="howToSend bg">
+      <div class="title"></div>
+      <div>
+        <button @click="submit()">
+          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+          <span>立即发送</span>
+        </button>
+        <button>
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <span>定时任务</span>
+        </button>
+        <button>
+          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+          <span>暂存</span>
+        </button>
+      </div>
+      <div class="bottom"></div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+import { validPicture } from '@/utils/valid.js'
+export default {
+  data () {
+    return {
+      type: 'text',
+      searchInfo: '',
+      content: '',
+      contentPic: {},
+      friendIds: [],
+      friendsInfo: [],
+      current: 0,
+      currentWechatId: '',
+      wechatIds: [],
+      wf: {}
+    }
+  },
+  computed: {
+    ...mapGetters({
+      wechats: 'wechats',
+      friendsList: 'friendsList'
+    })
+  },
+  watch: {
+    searchInfo (val) {
+      console.log(val)
+      let info = { wechatId: this.currentWechatId, val: val }
+      this.searchFriendsList(info)
+    },
+    currentWechatId () {
+      this.searchInfo = ''
+    }
+  },
+  methods: {
+    ...mapActions({
+      setFriendsList: 'SetFriendsList',
+      searchFriendsList: 'SearchFriendsList'
+    }),
+    toggleType (val) {
+      this.type = val
+    },
+    showPicture () {
+      console.log('showPicture')
+      let picture = this.$refs.gp.files[0]
+      if (!validPicture(picture.path)) {
+        this.$refs.gp.value = ''
+        alert('图片格式只能是jpg|jpeg|png|gif')
+      } else {
+        if (picture) {
+          let formdata = new FormData()
+          formdata.append('myfile', picture)
+          this.$store.dispatch('UploadFile', formdata).then(res => {
+            this.$refs.gp.value = ''
+            this.contentPic = res
+          }).catch(
+            err => {
+              console.log(err)
+            })
+        }
+      }
+    },
+    allChose (val) {
+      switch (val) {
+        case 1:
+          for (const friend of this.friendsList) {
+            if (this.friendIds.indexOf(friend.friendId) < 0) {
+              this.friendIds.push(friend.friendId)
+              this.friendsInfo.push(friend)
+            }
+          }
+          break
+        case 0:
+          for (const friendId of this.friendIds) {
+            let id = this.friendsInfo.indexOf(friendId)
+            this.friendsInfo.splice(id, 1)
+          }
+          this.friendIds = []
+          break
+        default:
+          this.friendIds = []
+          break
+      }
+    },
+    clearContent () {
+      console.log(this.content)
+      this.content = ''
+    },
+    choseWechat (wechat, index) {
+      console.log(index)
+      let id = this.wechatIds.indexOf(wechat.WeChatId)
+      if (id >= 0) {
+        this.wechatIds.splice(id, 1)
+      } else {
+        this.wechatIds.push(wechat.WeChatId)
+      }
+      this.currentWechatId = wechat.WeChatId
+      this.current = index
+      this.setFriendsList(wechat.WeChatId)
+    },
+    choseFriend (friend) {
+      let id = this.friendIds.indexOf(friend.friendId)
+      let id2 = this.friendsInfo.indexOf(friend)
+      if (id >= 0) {
+        this.friendIds.splice(id, 1)
+        this.friendsInfo.splice(id2, 1)
+      } else {
+        this.friendIds.push(friend.friendId)
+        this.friendsInfo.push(friend)
+      }
+    },
+    isSelected (friend, flag = 0) {
+      let result = -1
+      switch (flag) {
+        case 0:
+          result = this.friendIds.indexOf(friend.friendId)
+          break
+        case 1:
+          result = this.wechatIds.indexOf(friend.WeChatId)
+          break
+        default:
+          break
+      }
+      return result
+    },
+    submit () {
+      console.log('群发')
+      this.wf = {}
+      if (this.wechatIds.length > 0 && this.friendsInfo.length > 0) {
+        for (const friend of this.friendsInfo) {
+          if (this.wf[friend.wechatId]) {
+            this.wf[friend.wechatId].push(friend.friendId)
+          } else {
+            this.wf[friend.wechatId] = []
+            this.wf[friend.wechatId].push(friend.friendId)
+          }
+        }
+        for (const key in this.wf) {
+          if (this.wf.hasOwnProperty(key)) {
+            let id = this.wechatIds.indexOf(key)
+            if (id < 0) {
+              delete this.wf[key]
+            }
+          }
+        }
+        console.log(this.wf)
+        let msg = {}
+        if (this.type === 'text' && this.content !== '') {
+          msg = { reqApi: 'GroupSend', data: { wf: this.wf, type: 0, content: this.content, contentPic: this.contentPic } }
+        } else if (this.type === 'picture' && this.contentPic !== '') {
+          msg = { reqApi: 'GroupSend', data: { wf: this.wf, type: 1, content: this.content, contentPic: this.contentPic } }
+        } else {
+          alert('未设置群发的内容')
+        }
+        console.log(msg)
+        this.socketApi.sendSock(msg)
+      } else {
+        alert('未选择微信或好友')
+      }
+    }
+  }
+
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../../styles/globals.scss";
+.sendMessageToFriends {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bg {
+  height: 100%;
+  background: #e4e7ea;
+  border-radius: 10px;
+}
+.title {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.wechats {
+  width: 15%;
+  img{
+    width: 30px;
+    height: 30px;
+  }
+  .wechat-list {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      cursor: pointer;
+      position: relative;
+      span {
+        width: 50%;
+      }
+      &:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+    .selected {
+      &::before {
+        content: "✅";
+        width: 100%;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        left: 0;
+        top: 0;
+        text-align: end;
+        line-height: 40px;
+      }
+    }
+    .sw {
+      background: #c8c6c6;
+      span {
+        width: 50%;
+        color: white;
+      }
+    }
+  }
+}
+
+.friends {
+  width: 25%;
+  .search {
+    input {
+      width: 50%;
+      height: 18px;
+      border-radius: 5px;
+    }
+    button {
+      height: 18px;
+      width: 40px;
+      border-radius: 9px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+  }
+  ul {
+    height: 90%;
+    overflow-y: scroll;
+  }
+  li {
+    height: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    span {
+      margin-left: 5px;
+      width: 50%;
+    }
+    &:hover {
+      &::after {
+        content: "";
+        width: 100%;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+  .selected {
+    &::before {
+      content: "✅";
+      width: 100%;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      left: 0;
+      top: 0;
+      text-align: end;
+      line-height: 40px;
+    }
+  }
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.content {
+  width: 25%;
+  .type {
+    button {
+      width: 50px;
+      height: 18px;
+      border-radius: 9px;
+      cursor: pointer;
+      &:hover {
+        color: red;
+      }
+    }
+  }
+  .text {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    textarea {
+      width: 90%;
+      height: 90%;
+    }
+  }
+  .picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 90%;
+    div {
+      width: 90%;
+      height: 50%;
+      img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 90%;
+      }
+    }
+  }
+  .tool {
+    i {
+      color: white;
+      font-size: 21px;
+      cursor: pointer;
+      margin-left: 10px;
+      &:hover {
+        color: #4bbcfb;
+      }
+    }
+  }
+}
+
+.howToSend {
+  width: 20%;
+  div:nth-child(2) {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    button {
+      width: 60%;
+      height: 30px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      border-radius: 15px;
+      cursor: pointer;
+      i {
+        font-size: 16px;
+      }
+      span {
+        font-size: 14px;
+        width: 60px;
+      }
+    }
+    button:nth-child(1) {
+      background: black;
+      i,
+      span {
+        color: white;
+      }
+      &:hover {
+        i,
+        span {
+          color: #4bbcfb;
+        }
+      }
+    }
+  }
+}
+</style>
+

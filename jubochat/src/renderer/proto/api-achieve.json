@@ -1,0 +1,9 @@
+{
+  "朋友圈相关接口": {
+    "TriggerCirclePushTask": "获取指定微信的朋友圈",
+    "PullCircleDetailTask": "获取朋友圈图片详情",
+    "CircleDetailNotice": "返回朋友圈图片详情通知",
+    "DeleteSNSNewsTask": "删除朋友圈",
+    "CircleDelNotice": "返回删除朋友圈通知"
+  }
+}

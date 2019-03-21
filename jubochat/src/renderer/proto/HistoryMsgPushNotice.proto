@@ -1,0 +1,18 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+import "TransportMessage.proto";
+
+message ChatMessage {
+    string FriendId = 1; // 好友微信内部全局唯一识别码
+    EnumContentType ContentType = 2; // 发送的消息内容类型
+    bytes Content = 3; // 内容 二进制流
+    int64 MsgId = 4;  //服务端的主键id
+    int64 MsgSvrId = 5; // 消息唯一id
+    bool IsSend = 6; // 发送或接收
+    int64 CreateTime = 7; // 发送时间
+}
+
+message HistoryMsgPushNoticeMessage {
+    string WeChatId = 1; // 商家个人微信内部全局唯一识别码
+    repeated ChatMessage Messages = 2;
+}

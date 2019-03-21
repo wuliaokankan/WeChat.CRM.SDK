@@ -1,0 +1,11 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+message RequestTalkDetailTaskMessage {
+    int64 MsgId = 1; //全局消息id
+    string WeChatId = 2; //微信唯一Id
+    string FriendId = 3; //聊天好友微信唯一id
+    string MsgSvrId= 4; //微信设备上消息唯一id(FriendTalkNotice中上传)
+    string Md5 = 5; //图片或视频md5(FriendTalkNotice中上传)
+    bool GetOriginal=6;
+}

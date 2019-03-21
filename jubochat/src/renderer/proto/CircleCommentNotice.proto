@@ -1,0 +1,10 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+import "CircleNewPublishNotice.proto";
+message CircleCommentNoticeMessage {
+    string WeChatId = 1; // 所属微信
+    int64 CircleId = 2; // 朋友圈id
+    bool IsDelete = 3;  // 是否是评论
+    CircleCommentMessage Comment = 4; // 评论内容(必选，删除也需要使用)
+}

@@ -1,0 +1,8 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+import "TransportMessage.proto";
+message AccountLogoutNoticeMessage {
+    int64 UnionId = 1; // Juketool UnionId
+    EnumAccountType AccountType = 2; // 账号类型
+}

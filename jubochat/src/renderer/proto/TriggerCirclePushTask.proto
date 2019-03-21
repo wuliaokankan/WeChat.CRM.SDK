@@ -1,0 +1,8 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+
+message TriggerCirclePushTaskMessage {
+    string WeChatId = 1; // 所属微信
+    int64 StartTime = 2; // 起始时间 选其一
+    repeated int64 CircleIds = 3; // 朋友圈ids 选其一
+}

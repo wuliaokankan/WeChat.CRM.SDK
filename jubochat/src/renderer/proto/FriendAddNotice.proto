@@ -1,0 +1,24 @@
+syntax = "proto3";
+package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
+import "TransportMessage.proto";
+
+message FriendMessage {
+    string FriendId = 1; // 微信号
+    string FriendNo = 2; // 微信别名
+    string FriendNick = 3; // 好友的微信昵称
+    string Memo = 4; // 机主的备注
+    EnumGender Gender = 5; //性别
+    string Country = 6; //国家 (非必传)
+    string Province = 7; //省份
+    string City = 8; //城市
+    string Avatar = 9; //微信头像 
+    string Remark=10;// 备注信息，一般内部使用比如，购物账号名称等等
+    int32 Type = 11; // 联系人类型，判断是否为好友
+    string LabelIds = 12; // 标签Id
+}
+
+message FriendAddNoticeMessage {
+    string WeChatId = 1; // 商家个人微信内部全局唯一识别码
+    FriendMessage Friend = 3; // 好友信息
+}
+
