@@ -1,7 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
-
-message RequestContactsInfoTaskMessage {
-    string WeChatId = 1; //微信唯一Id
-    repeated string Contacts = 2; // 联系人username列表，
-}

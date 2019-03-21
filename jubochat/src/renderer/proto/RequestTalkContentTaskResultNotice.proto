@@ -1,9 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
-
-message RequestTalkContentTaskResultNoticeMessage {
-    string WeChatId = 1;
-    int64 MsgSvrId = 2;
-    int32 MsgType = 3; // 消息的原始类型，一般为49，链接消息
-    string Content = 4; // 消息的原始内容
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
-import "TransportMessage.proto";
-
-message WeChatDoSomeTaskMessage {
-    int64 SupplierId = 1; // 所属商家
-    string WeChatId = 2; // 商家所属微信号
-    EnumTaskType TaskType = 3; // 任务类型
-}

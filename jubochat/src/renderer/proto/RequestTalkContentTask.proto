@@ -1,7 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
-
-message RequestTalkContentTaskMessage {
-    string WeChatId = 1; //微信唯一Id
-    int64 MsgSvrId= 2; //微信设备上消息唯一id(FriendTalkNotice中上传)
-}

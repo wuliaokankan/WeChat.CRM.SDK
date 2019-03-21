@@ -1,8 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
-import "FriendAddNotice.proto";
-
-message ContactsInfoNoticeMessage {
-    string WeChatId = 1; // 商家个人微信内部全局唯一识别码
-    repeated FriendMessage Friends = 2; // 好友信息
-}

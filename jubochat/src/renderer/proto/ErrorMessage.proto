@@ -1,8 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto;
-import "TransportMessage.proto";
-
-message ErrorMessage {
-    EnumErrorCode ErrorCode = 1; //错误码（只在响应类消息时需要赋值)
-    string ErrorMsg = 2; //错误信息（只在响应类消息时需要赋值）
-}

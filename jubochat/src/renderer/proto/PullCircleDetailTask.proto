@@ -1,8 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
-
-message PullCircleDetailTaskMessage {
-    string WeChatId = 1; // 所属微信
-//    string FriendId = 2; // 朋友圈作者
-    int64 CircleId = 3; // 朋友圈id
-}

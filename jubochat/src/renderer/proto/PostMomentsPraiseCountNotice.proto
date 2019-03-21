@@ -1,8 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
-
-message PostMomentsPraiseCountNoticeMessage {
-    int64 TaskId = 1; // 所执行的任务ID
-    int32 Count = 2; // 已点赞数量
-    string WeChatId = 3; // 商家个人微信内部全局唯一识别码
-}

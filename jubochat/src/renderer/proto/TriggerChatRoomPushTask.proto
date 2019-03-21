@@ -1,6 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
-
-message TriggerChatRoomPushTaskMessage {
-    string WeChatId = 1; // 商家所属微信号
-}

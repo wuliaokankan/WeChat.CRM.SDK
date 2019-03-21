@@ -1,7 +1,0 @@
-syntax = "proto3";
-package Jubo.JuLiao.IM.Wx.Proto; //命名空间约定
-
-message TriggerMessageReadTaskMessage {
-    string WeChatId = 1; // 所属微信号
-    string FriendId = 2; // 好友id
-}
