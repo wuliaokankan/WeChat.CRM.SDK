@@ -1,4 +1,4 @@
-# jbchat
+# 这是微信SDK云控微信客服系统PC端源码
 
 > An electron-vue project
 
@@ -25,4 +25,4 @@ npm run lint
 
 ---
 
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[32ecf6a](https://github.com/SimulatedGREG/electron-vue/tree/32ecf6aebd2e2c28ad2628f151697529e442e679) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+# 有任何问题请加微信tangjinjinwx详聊
