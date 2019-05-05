@@ -324,13 +324,13 @@ ChatRoomMembersNotice = 2034;
 --------------------
 咨询请加微信tangjinjinwx
 
-以下为PC端演示demo,源码已上传，二次开发有疑问请加问下
+以下为PC端演示demo,源码已上传到github，二次开发有疑问请加微信tangjinjinwx
 --------------------
-![Image text](https://img-blog.csdnimg.cn/20190308153539202.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
-![Image text](https://img-blog.csdnimg.cn/20190308152747253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
-![Image text](https://img-blog.csdnimg.cn/20190308152834149.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
-![Image text](https://img-blog.csdnimg.cn/2019030815285169.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
-![Image text](https://img-blog.csdnimg.cn/20190308152903443.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTEyNjk3NjI=,size_16,color_FFFFFF,t_70)
+![Image text](http://www.yunlauncher.com/kf/1.png)
+![Image text](http://www.yunlauncher.com/kf/2.png)
+![Image text](http://www.yunlauncher.com/kf/3.png)
+![Image text](http://www.yunlauncher.com/kf/4.png)
+![Image text](http://www.yunlauncher.com/kf/5.png)
 
 微信sdk方案可实现功能说明
 --------------
