@@ -320,7 +320,7 @@ HistoryMsgPushNotice = 2033;
 9、群成员（陌生人）信息
 ChatRoomMembersNotice = 2034;
 
-目前【聚客通】【有客来】等等等scrm都是基于这个API二次开发的。
+目前【聚客通】等等等scrm都是基于这个API二次开发的。
 --------------------
 咨询请加微信tangjinjinwx
 
