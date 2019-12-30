@@ -394,4 +394,5 @@ ChatRoomMembersNotice = 2034;
 技术交流QQ群
 ------------------
 ![Image text](http://www.yunlauncher.com/kf/qqqun.png)
+
 QQ群：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=32b5ffa731c3dc853dd58900d3381aa13209ee03ff64b4e962560c5ccd3c801d">787065908</a>
