@@ -394,5 +394,4 @@ ChatRoomMembersNotice = 2034;
 技术交流QQ群
 ------------------
 ![Image text](http://www.yunlauncher.com/kf/qqqun.png)
-QQ群：787065908
-<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=32b5ffa731c3dc853dd58900d3381aa13209ee03ff64b4e962560c5ccd3c801d"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="个人微信API接口" title="个人微信API接口"></a>
+QQ群：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=32b5ffa731c3dc853dd58900d3381aa13209ee03ff64b4e962560c5ccd3c801d">787065908</a>
