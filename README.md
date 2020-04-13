@@ -346,7 +346,7 @@ ChatRoomMembersNotice = 2034;
 ![Image text](http://www.yunlauncher.com/kf/4.png)
 ![Image text](http://www.yunlauncher.com/kf/5.png)
 
-新版本的演示demo请参考http://jianzhan.wuliaokankan.cn/article/183.html
+新版本的演示demo请参考http://www.wlkankan.cn/cate41/183.html
 
 微信sdk方案可实现功能说明
 --------------
