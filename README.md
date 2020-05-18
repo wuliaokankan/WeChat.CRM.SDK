@@ -8,7 +8,7 @@
 清理僵尸粉、消息群发、通过好友请求、      
 微信建群、微信拉人进群、踢群成员、邀请群成员、退群、改群名称、群列表、发布群公告、多群消息同步等      
 微信公众号阅读、关注与取消关注公众号、公众号列表信息、清理微信空间...功能太多懒得写了！！！
-sdk商用2年多了，一直在更新维护(2020年4月13号)
+sdk商用2年多了，一直在更新维护(2020年5月18号)
 
 ！！！！sdk会不断更新升级，demo的最新源码请加微信了解详情！！！！
 
@@ -341,13 +341,13 @@ ChatRoomMembersNotice = 2034;
 --------------------
 咨询请加微信happybabby110
 
-以下为PC端演示demo,老的demo源码已上传到github，二次开发有疑问请加微信tangjinjinwx
+以下为PC端演示demo,老的demo源码已上传到github，二次开发有疑问请加微信咨询
 --------------------
-![Image text](http://www.yunlauncher.com/kf/1.png)
-![Image text](http://www.yunlauncher.com/kf/2.png)
-![Image text](http://www.yunlauncher.com/kf/3.png)
-![Image text](http://www.yunlauncher.com/kf/4.png)
-![Image text](http://www.yunlauncher.com/kf/5.png)
+![Image text](http://www.wlkankan.cn/image/201911/A08F45F5D0316560CC2664D745E1208B.jpg)
+![Image text](http://www.wlkankan.cn/image/201911/BE60308DFDADE1F7D45786E15B971A8B.jpg)
+![Image text](http://www.wlkankan.cn/image/201911/DBC3CC67CCBEE29176E6BDEEAF3BAF8B.jpg)
+![Image text](http://www.wlkankan.cn/image/201911/98AA5B57B0943F6D682711CD8FCDB0C4.jpg)
+![Image text](http://www.wlkankan.cn/image/201911/E831DF113ACCD550806E0F0EF9931BA2.jpg)
 
 新版本的演示demo请参考http://www.wlkankan.cn/cate41/183.html
 
@@ -409,3 +409,6 @@ ChatRoomMembersNotice = 2034;
 ![Image text](http://www.yunlauncher.com/kf/qqqun.png)
 
 QQ群：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=32b5ffa731c3dc853dd58900d3381aa13209ee03ff64b4e962560c5ccd3c801d">787065908</a>
+
+
+# 加微信请注明来意，谢谢！
