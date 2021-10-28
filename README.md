@@ -364,7 +364,8 @@ ChatRoomMembersNotice = 2034;
 2.0版本的演示demo请参考http://www.wlkankan.cn/cate41/183.html
 
 最新演示demo地址：http://www.wlkankan.cn/cate41/301.html
-![Image text](Image text](http://www.wlkankan.cn/image/201911/E831DF113ACCD550806E0F0EF9931BA2.jpg))
+
+![Image text](http://www.wlkankan.cn/image/201911/E831DF113ACCD550806E0F0EF9931BA2.jpg)
 ![Image text](http://www.wlkankan.cn/image/202106/555059EC445F8EDFD9493F42F22B25EC.jpg)
 
 
