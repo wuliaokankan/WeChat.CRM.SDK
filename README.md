@@ -48,11 +48,11 @@ SDK接入简单、兼容性好、拓展性强，始终支持微信官方最新�
 
 微信SDK安装使用注意事项
 ----------------------------
-1、需要真实手机，安卓7.0以上操作系统
+1、需要真实手机，安卓8.0以上操作系统
 
 2、手机需要root,微信sdk需要root权限（也有免root版本，具体请加微信了解）
 
-3、自主搭建服务端时，请自主进入设置界面修改服务端ip及端口
+3、可私有化搭建服务，可自由二次开发
 
 微信SDK可以用了做什么
 -----------------------
@@ -74,7 +74,7 @@ SDK接入简单、兼容性好、拓展性强，始终支持微信官方最新�
 
 咨询请加微信happybabby110
 
-微信SDK接口API全部协议定义
+微信SDK接口API协议定义(仅展示部分)
 ----------------
 1、基础消息类型
 
@@ -361,6 +361,10 @@ ChatRoomMembersNotice = 2034;
 3.0版本的演示demo请参考http://www.wlkankan.cn/cate41/243.html
 
 2.0版本的演示demo请参考http://www.wlkankan.cn/cate41/183.html
+
+最新演示demo地址：http://www.wlkankan.cn/cate41/301.html
+![Image text](Image text](http://www.wlkankan.cn/image/201911/E831DF113ACCD550806E0F0EF9931BA2.jpg))
+![Image text](http://www.wlkankan.cn/image/202106/555059EC445F8EDFD9493F42F22B25EC.jpg)
 
 
 微信sdk方案可实现功能说明
